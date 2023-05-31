@@ -69,3 +69,4 @@ dhis_name,display_name,code_name,dhis_id,frequency,dhis_version,age_sex
 097b-VS05. Number of VHTs attached to the facility that submitted a report (All programs),VHTs attached to facility reporting,vht_facility_reporting,szYQEsYd44P,quarterly,2,0
 097b-VS06. Number of villages reporting,VHT villages reporting,vht_actual_report,xCP0SCOn2ov,quarterly,2,0
 105-1.3 OPD Malaria Confirmed (Microscopic & RDT),Confirmed malaria,conf_malaria,J4wj2B8rV6P,monthly,1,0
+108-6 Malaria Confirmed (Microscopic &RDT),IPDconfirmedmal,ip_conf_cases,vlmLOxXIs6Z,monthly,1,

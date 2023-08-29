@@ -5,3 +5,4 @@
 
 dhis_indicator_table <- data.table::fread("data-raw/dhis_indicator_table.csv")
 usethis::use_data(dhis_indicator_table, overwrite = TRUE)
+

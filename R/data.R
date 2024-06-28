@@ -12,3 +12,6 @@
 
 #' Old DHIS indicator table
 "old_dhis_indicator_table"
+
+#' District shapefile
+"uga_district_shp"

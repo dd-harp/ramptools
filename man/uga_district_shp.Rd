@@ -3,7 +3,7 @@
 \docType{data}
 \name{uga_district_shp}
 \alias{uga_district_shp}
-\title{District shapefile}
+\title{District shapefile version1.0}
 \format{
 An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 146 rows and 3 columns.
 }
@@ -11,6 +11,6 @@ An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{dat
 uga_district_shp
 }
 \description{
-District shapefile
+District shapefile version1.0
 }
 \keyword{datasets}

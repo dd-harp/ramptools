@@ -15,3 +15,5 @@ Malaria treated - WEP RDT Positive Cases Treated,RDT positive cases treated,rdt_
 Stock Balance: RDT (Malaria) - WEP,RDT stock,rdt_stock,CzsKMvQDwMV.gGhClrV5odI,weekly
 Stock Balance: ACT (Tablets) - WEP,ACT stock,tx_stock,Ju0Cann41Ul.gGhClrV5odI,weekly
 Stock Balance: IV Artesunate - WEP,Artesunate stock,artesunate_stock,O2OrXuZo4hB.gGhClrV5odI,weekly
+105-1.3 OPD Malaria Confirmed (Microscopic & RDT),Confirmed malaria,conf_malaria,J4wj2B8rV6P,monthly
+108-6 Malaria Confirmed (Microscopic &RDT),IPD confirmed malaria,ip_conf_cases,vlmLOxXIs6Z,monthly

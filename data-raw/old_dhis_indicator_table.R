@@ -6,3 +6,4 @@
 old_dhis_indicator_table <- data.table::fread("data-raw/old_dhis_indicator_table.csv")
 usethis::use_data(old_dhis_indicator_table, overwrite = TRUE)
 
+

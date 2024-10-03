@@ -8,10 +8,7 @@
 "age_sex_table"
 
 #' DHIS indicator table
-"dhis_indicator_table"
-
-#' Old DHIS indicator table
-"old_dhis_indicator_table"
+"indicator_table"
 
 #' District shapefile version1.0
 "uga_district_shp"

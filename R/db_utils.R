@@ -1,5 +1,8 @@
+#' Get the latest version number from the database
+#'
 #' @param db_path Location of the database
 #' @returns Integer value of latest version
+#' @export
 get_latest_version <- function(db_path) {
   # Connect to database
   db <- DBI::dbConnect(RSQLite::SQLite(), db_path)
@@ -12,13 +15,17 @@ get_latest_version <- function(db_path) {
   return(latest_version)
 }
 
+#' Get metadata for a specific version
+#'
 #' @param db_path Location of the database
-#' @param version_id
+#' @param version_id Integer for version number to pull metadata for
 #' @returns Integer value of latest version
-get_version_metadata <- function(db_path, version_id) {
+#' @export
+get_version_metadata <- function(db_path, version_id = NULL) {
   # Connect to database
   db <- DBI::dbConnect(RSQLite::SQLite(), db_path)
-  # Grab the latest version
+  if(is.null(version_id)) version_id <- get_latest_version(db_path)
+  # Grab the metadata for the specific version
   version_metadata <-  tbl(db, "version_metadata") %>%
     filter(version == version_id) %>%
     collect()
@@ -27,6 +34,11 @@ get_version_metadata <- function(db_path, version_id) {
   return(as.data.table(version_metadata))
 }
 
+#' Get the names of the variables that uniquely identify an observation
+#'
+#' @param db_path Location of the database
+#' @returns Vector of column names that uniquely identify an observation
+#' @export
 get_id_vars <- function(db_path) {
   # Connect to database
   db <- DBI::dbConnect(RSQLite::SQLite(), db_path)
@@ -39,6 +51,11 @@ get_id_vars <- function(db_path) {
   return(id_vars)
 }
 
+#' Get the name of the value column
+#'
+#' @param db_path Location of the database
+#' @returns Column name for the value
+#' @export
 get_value_var <- function(db_path) {
   # Connect to database
   db <- DBI::dbConnect(RSQLite::SQLite(), db_path)
@@ -51,10 +68,12 @@ get_value_var <- function(db_path) {
   return(value_var)
 }
 
+#' Get the data from a database with the option to subset to a specified version and id values
+#'
 #' @param db_path Location of the database
 #' @param id_list A list of id names and values, if NULL, pulls full table
-#' @param version_id Integer version number, if NULL, pulls latest version 
-#' 
+#' @param version_id Integer version number, if NULL, pulls latest version
+#'
 get_data <- function(db_path, id_list = NULL, version_id = NULL) {
   # Connect to database
   db <- DBI::dbConnect(RSQLite::SQLite(), db_path)
@@ -83,6 +102,12 @@ get_data <- function(db_path, id_list = NULL, version_id = NULL) {
   return(data)
 }
 
+#' Get the data from new data that differs from what is present in the database
+#'
+#' @param new_data data.frame with new data for comparison to the data in the database
+#' @param db_path Location of the database
+#' @returns data.frame with the data from new data that differs from what is present in the database
+#' @export
 get_db_diff <- function(new_data, db_path) {
   id_vars <- get_id_vars(db_path)
   value_var <- get_value_var(db_path)
@@ -94,6 +119,11 @@ get_db_diff <- function(new_data, db_path) {
   return(db_diff)
 }
 
+#' Merge on human readable columns to raw data
+#'
+#' @param dt data.table with raw data in it
+#' @returns data.table with human readable columns merged on
+#' @export
 make_human_readable <- function(dt) {
   setnames(dt, c("dataElement", "orgUnit"), c("dhis_id", "location_id"))
   dt <- merge(dt, loc_table[, .(location_id, location_name)])

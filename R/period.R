@@ -1,3 +1,12 @@
+#' Get the a vector of periods follow DHIS formatting that spans that start and end period provided
+#'
+#' @param frequency Text of either weekly or monthly
+#' @param year_start Integer for start year
+#' @param sub_year_start Integer for either week or month of the year to start
+#' @param year_end Integer for end year
+#' @param sub_year_end Integer for either week or month of the year to end
+#' @returns A vector of periods following the DHIS formatting standard of either YYYYW{week number with no leading zero} or YYYY{month number with a leading zero for single digit integers}
+#' @export
 get_period_range <- function(frequency, year_start, sub_year_start, year_end,
                           sub_year_end) {
   #TODO: Error messages for non-sensical inputs
@@ -28,6 +37,12 @@ get_period_range <- function(frequency, year_start, sub_year_start, year_end,
   return(period_dt$period)
 }
 
+#' Make a table that provides the date information associated with a DHIS period
+#'
+#' @param min_date Date string in YYYY-MM-DD format for start date of the map
+#' @returns A table with the period in DHIS format, year, week, date_start, date_mid, and date_end
+#' @export
+
 make_week_map <- function(min_date = "2012-12-31") {
   dt <- data.table(date = seq(as.IDate(min_date), Sys.Date(), by = 1))
   dt[, year := year(date)]
@@ -41,6 +56,12 @@ make_week_map <- function(min_date = "2012-12-31") {
   week_map[, period := paste0(year, "W", week)]
   return(week_map[])
 }
+
+#' Make a table that provides the date information associated with a DHIS period
+#'
+#' @param min_date Date string in YYYY-MM-DD format for start date of the map
+#' @returns A table with the period in DHIS format, year, month, date_start, date_mid, and date_end
+#' @export
 
 make_month_map <- function(min_date = "2013-01-01") {
   dt <- data.table(date = seq(as.IDate(min_date), Sys.Date(), by = 1))

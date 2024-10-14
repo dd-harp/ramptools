@@ -126,7 +126,7 @@ get_db_diff <- function(new_data, db_path) {
 #' @export
 make_human_readable <- function(dt) {
   setnames(dt, c("dataElement", "orgUnit"), c("dhis_id", "location_id"))
-  dt <- merge(dt, loc_table[, .(location_id, location_name)])
-  dt <- merge(dt, indicator_table[, .(dhis_id, code_name)])
+  dt <- merge(dt, loc_table[, .(location_id, location_name)], by = "location_id")
+  dt <- merge(dt, indicator_table[, .(dhis_id, code_name)], by = "dhis_id")
   return(dt)
 }

@@ -73,7 +73,7 @@ get_value_var <- function(db_path) {
 #' @param db_path Location of the database
 #' @param id_list A list of id names and values, if NULL, pulls full table
 #' @param version_id Integer version number, if NULL, pulls latest version
-#'
+#' @export
 get_data <- function(db_path, id_list = NULL, version_id = NULL) {
   # Connect to database
   db <- DBI::dbConnect(RSQLite::SQLite(), db_path)

@@ -94,8 +94,6 @@ Stock Balance: IV Artesunate - WEP,Artesunate stock,artesunate_stock,O2OrXuZo4hB
 105-PS01b. Malaria Microscopy - Positive,Microscopy positive cases,micro_pos,ez6sNmNEdZ1,monthly,1
 105-1.3 OPD Malaria (Total),Malaria cases,cases,Q62QyMDzm3h,monthly,1
 108-1 Admissions,Noadmissions,admissions,TeqmgLSq8hB,monthly,1
-108-6 Malaria total,Iptotmalaria,ip_total,l5Z1EvnZY3X,monthly,1
-108-6 Malaria In Pregnancy,IPDMIP total,ip_mip_total,Gg4H29c3VpF,monthly,1
 108-1 Deaths,Nodeaths,deaths,LHfLulpwrHO,monthly,1
 108-1 No. of Beds,nobeds,beds,mNCcNfCcCTY,monthly,1
 105-2.1 A6:First dose IPT (IPT1),IPT1,ipt1,YNkTlREfRJj,monthly,1

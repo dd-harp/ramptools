@@ -86,3 +86,22 @@ Stock Balance: ACT (Tablets) - WEP,ACT stock,tx_stock,Ju0Cann41Ul.gGhClrV5odI,we
 Stock Balance: IV Artesunate - WEP,Artesunate stock,artesunate_stock,O2OrXuZo4hB.gGhClrV5odI,weekly,1
 105-1.3 OPD Malaria Confirmed (Microscopic & RDT),Confirmed malaria,conf_malaria,J4wj2B8rV6P,monthly,1
 108-6 Malaria Confirmed (Microscopic &RDT),IPD confirmed malaria,ip_conf_cases,vlmLOxXIs6Z,monthly,1
+105-PS02a. Malaria RDTs - Done,Cases tested with RDT,rdt_tested,Nv180Ny9DZA,monthly,1
+105-PS02b. Malaria RDTs - Positive,RDT positive cases,rdt_pos,Pf7ZVI6Fbpz,monthly,1
+105-PS01a. Malaria Microscopy - Done,Cases tested with microscopy,micro_tested,L2Xw0NtVBRy,monthly,1
+105-PS01b. Malaria Microscopy - Positive,Cases tested with RDT,rdt_tested,ez6sNmNEdZ1,monthly,1
+105-1.3 OPD Malaria (Total),Malaria cases,cases,Q62QyMDzm3h,monthly,1
+108-1 Admissions,Noadmissions,admissions,TeqmgLSq8hB,monthly,1
+108-6 Malaria total,IPtotmalaria,ip_cases,l5Z1EvnZY3X,monthly,1
+108-6 Malaria In Pregnancy,IPDMIP,ip_mip,Gg4H29c3VpF,monthly,1
+108-1 Deaths,Nodeaths,deaths,LHfLulpwrHO,monthly,1
+108-1 No. of Beds,nobeds,beds,mNCcNfCcCTY,monthly,1
+105-2.1 A6:First dose IPT (IPT1),IPT1,ipt1,YNkTlREfRJj,monthly,1
+105-2.1 A7:Second dose IPT (IPT2),IPT2,ipt2,lNohgsiZ1lr,monthly,1
+105-2.1 A1:ANC 1st Visit for women,ANC1,anc1,eGSUL2aL0zW,monthly,1
+105-6  Malaria Rapid Diagnostic tests-Quantity Utilized,RDTconsumed,rdt_consumed,M3l4H6S7nLR.Vmry0TpOext,monthly,1
+105-6  Malaria Rapid Diagnostic tests-Days out of stock,RDTstockout,rdt_stockout,M3l4H6S7nLR.ktQNMlfTxyA,monthly,1
+105-6  Malaria Rapid Diagnostic tests-Stock at Hand,RDTstock,rdt_stock,M3l4H6S7nLR.sTrjhu4Jmoy,monthly,1
+105-6 Artemether/ Lumefantrine 100/20mg tablet-Quantity Utilized,ALconsumed,al_consumed,IBuhlkMrwqY.Vmry0TpOext,monthly,1
+105-6 Artemether/ Lumefantrine 100/20mg tablet-Days out of stock,ALstockout,al_stockout,IBuhlkMrwqY.ktQNMlfTxyA,monthly,1
+105-6 Artemether/ Lumefantrine 100/20mg tablet-Stock at Hand,ALstock,al_stock,IBuhlkMrwqY.sTrjhu4Jmoy,monthly,1

@@ -40,11 +40,11 @@ dhis_name,display_name,code_name,dhis_id,frequency,dhis_version
 108-CI01. No. of beds,nobeds,beds,R9l3TcJpS5I,monthly,2
 108-CI02. No. of admissions,Noadmissions,admissions,UwnR5kr982Y,monthly,2
 108-CI03. No. of deaths,Nodeaths,deaths,vyOajQA5xTu,monthly,2
-108-EP01a.1. Malaria Total (Cases),IPtotmalaria,ip_cases,BWZFz9RJRPI,monthly,2
+108-EP01a.1. Malaria Total (Cases),Iptotmalaria cases,ip_cases,BWZFz9RJRPI,monthly,2
 108-EP01a.2. Malaria Total (Deaths),IPDmaldeaths,ip_deaths,AuAOIfCuBUp,monthly,2
-108-EP01b.1. Malaria Confirmed (Microscopic &RDT) (Cases),IPDconfirmedmal,ip_conf_cases,pRZrTLDN7Ge,monthly,2
+108-EP01b.1. Malaria Confirmed (Microscopic &RDT) (Cases),IPD confirmed malaria,ip_conf_cases,pRZrTLDN7Ge,monthly,2
 108-EP01b.2. Malaria Confirmed (Microscopic &RDT) (Deaths),IPDconfirmedmaldeaths,ip_conf_deaths,gHjJrtw9vQX,monthly,2
-108-MC03a. Malaria in pregnancy (Cases),IPDMIP,ip_mip,QmlhUL99jdt,monthly,2
+108-MC03a. Malaria in pregnancy (Cases),IPDMIP cases,ip_mip_cases,QmlhUL99jdt,monthly,2
 108-MC03b. Malaria in pregnancy (Deaths),MIPdeaths,ip_mip_deaths,NQ7dTz23aAa,monthly,2
 108-ME07a. All others (Cases),Allcases,other_cases,O0mZlq4yYtv,monthly,2
 108-ME07b. All others (Deaths),Allotherdeaths,other_deaths,KUR1yjLJYoa,monthly,2
@@ -55,6 +55,8 @@ dhis_name,display_name,code_name,dhis_id,frequency,dhis_version
 105-PS02a. RDT done,Cases tested with RDT,rdt_tested,JfOGWtiSj1J,monthly,2
 105-PS01b. Microscopy positive,Microscopy positive cases,micro_pos,OwLbdAphoNp,monthly,2
 105-PS02b. RDT positive,RDT positive cases,rdt_pos,OOsYcFK5YbS,monthly,2
+105-OA02. Re-attendance,repeat opd visit,opd_repeat,sQ4EexvvhVe,monthly,2
+105-OA01. New attendance,new opd visits,opd_new,sv6SeKroHPV,monthly,2
 097b-IC05. Number of Children 2 months - 5yrs cases with fever seen by VHTs,VHT fever seen,vht_fever,ZPgTzBpXQtT,quarterly,2
 097b-IC06. Number of Children 2months - 5yrs cases with fever that received malaria RDT seen by VHT,VHT fever received RDT,vht_rdt,SZOxZEnWtGU,quarterly,2
 097b-IC07. Number of Sick Children 2months-5yrs with confirmed Malaria by RDT,VHT RDT confirmed malaria,vht_conf_malaria,UvBZpWxJ8ff,quarterly,2
@@ -89,19 +91,30 @@ Stock Balance: IV Artesunate - WEP,Artesunate stock,artesunate_stock,O2OrXuZo4hB
 105-PS02a. Malaria RDTs - Done,Cases tested with RDT,rdt_tested,Nv180Ny9DZA,monthly,1
 105-PS02b. Malaria RDTs - Positive,RDT positive cases,rdt_pos,Pf7ZVI6Fbpz,monthly,1
 105-PS01a. Malaria Microscopy - Done,Cases tested with microscopy,micro_tested,L2Xw0NtVBRy,monthly,1
-105-PS01b. Malaria Microscopy - Positive,Cases tested with RDT,rdt_tested,ez6sNmNEdZ1,monthly,1
+105-PS01b. Malaria Microscopy - Positive,Microscopy positive cases,micro_pos,ez6sNmNEdZ1,monthly,1
 105-1.3 OPD Malaria (Total),Malaria cases,cases,Q62QyMDzm3h,monthly,1
 108-1 Admissions,Noadmissions,admissions,TeqmgLSq8hB,monthly,1
-108-6 Malaria total,IPtotmalaria,ip_cases,l5Z1EvnZY3X,monthly,1
-108-6 Malaria In Pregnancy,IPDMIP,ip_mip,Gg4H29c3VpF,monthly,1
 108-1 Deaths,Nodeaths,deaths,LHfLulpwrHO,monthly,1
 108-1 No. of Beds,nobeds,beds,mNCcNfCcCTY,monthly,1
 105-2.1 A6:First dose IPT (IPT1),IPT1,ipt1,YNkTlREfRJj,monthly,1
 105-2.1 A7:Second dose IPT (IPT2),IPT2,ipt2,lNohgsiZ1lr,monthly,1
-105-2.1 A1:ANC 1st Visit for women,ANC1,anc1,eGSUL2aL0zW,monthly,1
+105-2.1 A1:ANC 1st Visit for women,ANC 1st visit,anc1,eGSUL2aL0zW,monthly,1
 105-6  Malaria Rapid Diagnostic tests-Quantity Utilized,RDTconsumed,rdt_consumed,M3l4H6S7nLR.Vmry0TpOext,monthly,1
 105-6  Malaria Rapid Diagnostic tests-Days out of stock,RDTstockout,rdt_stockout,M3l4H6S7nLR.ktQNMlfTxyA,monthly,1
 105-6  Malaria Rapid Diagnostic tests-Stock at Hand,RDTstock,rdt_stock,M3l4H6S7nLR.sTrjhu4Jmoy,monthly,1
 105-6 Artemether/ Lumefantrine 100/20mg tablet-Quantity Utilized,ALconsumed,al_consumed,IBuhlkMrwqY.Vmry0TpOext,monthly,1
 105-6 Artemether/ Lumefantrine 100/20mg tablet-Days out of stock,ALstockout,al_stockout,IBuhlkMrwqY.ktQNMlfTxyA,monthly,1
 105-6 Artemether/ Lumefantrine 100/20mg tablet-Stock at Hand,ALstock,al_stock,IBuhlkMrwqY.sTrjhu4Jmoy,monthly,1
+105-1.1 OPD New Attendance,new opd visits,opd_new,GOXEXTR0uST,monthly,1
+105-1.1 OPD Re-Attendance,repeat opd visit,opd_repeat,d6pfBm8deOI,monthly,1
+105-2.1 A1:ANC 1st Visit for women (No. in 1st Trimester),ANC 1st visit_Trim1,anc1_tri,Qf8WoOvD9rN,monthly,1
+105-2.1 A9:Pregnant Women receiving free LLINs,LLIN at ANC1,anc_llin,Wq6Id8nEm7E,monthly,1
+105-1.3 OPD Malaria (Total),Totmalaria,tot_malaria,Q62QyMDzm3h,monthly,1
+105-1.3 OPD Malaria In Pregnancy,MIP,mip,adF5g61P6YH,monthly,1
+105-6 Sulfadoxine / Pyrimethamine tablet-Quantity Utilized,SP Consumed,sp_consumed,lRROc3zZwxH.Vmry0TpOext,monthly,1
+105-6 Sulfadoxine / Pyrimethamine tablet-Days out of stock,SP days out stock,sp_stockout,lRROc3zZwxH.ktQNMlfTxyA,monthly,1
+105-6 Sulfadoxine / Pyrimethamine tablet-Stock at Hand,SP stock at hand,sp_stock,lRROc3zZwxH.sTrjhu4Jmoy,monthly,1
+108-6 Malaria total-Death,IPDmaldeaths,ip_deaths,l5Z1EvnZY3X.MKXNBi5IC7X,monthly,1
+108-6 Malaria total- Case,Iptotmalaria cases,ip_cases,l5Z1EvnZY3X.u1lLZGpvgln,monthly,1
+108-6 Malaria In Pregnancy - Case,IPDMIP cases,ip_mip_cases,Gg4H29c3VpF.MKXNBi5IC7X,monthly,1
+108-6 Malaria In Pregnancy - Deaths,MIPdeaths,ip_mip_deaths,Gg4H29c3VpF.u1lLZGpvgln,monthly,1

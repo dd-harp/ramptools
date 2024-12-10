@@ -5,7 +5,7 @@
 \alias{loc_table}
 \title{Location hierarchy table}
 \format{
-An object of class \code{data.table} (inherits from \code{data.frame}) with 10476 rows and 16 columns.
+An object of class \code{data.table} (inherits from \code{data.frame}) with 10952 rows and 16 columns.
 }
 \usage{
 loc_table

@@ -5,7 +5,7 @@
 \alias{indicator_table}
 \title{DHIS indicator table}
 \format{
-An object of class \code{data.table} (inherits from \code{data.frame}) with 87 rows and 6 columns.
+An object of class \code{data.table} (inherits from \code{data.frame}) with 118 rows and 6 columns.
 }
 \usage{
 indicator_table

@@ -18,3 +18,6 @@
 
 #' Region shapefile version1.0
 "uga_region_shp"
+
+#' Water shapefile version1.0
+"uga_water_shp"

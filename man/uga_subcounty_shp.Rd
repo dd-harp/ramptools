@@ -5,7 +5,7 @@
 \alias{uga_subcounty_shp}
 \title{Subcounty shapefile version1.0}
 \format{
-An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 2206 rows and 4 columns.
+An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 2204 rows and 8 columns.
 }
 \usage{
 uga_subcounty_shp

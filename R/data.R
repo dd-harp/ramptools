@@ -1,6 +1,9 @@
 #' Location hierarchy table
 "loc_table"
 
+#' Health facility table
+"health_facility_table"
+
 #' District population data
 "district_pop"
 

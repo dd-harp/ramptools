@@ -5,12 +5,23 @@
 \alias{loc_table}
 \title{Location hierarchy table}
 \format{
-An object of class \code{data.table} (inherits from \code{data.frame}) with 10952 rows and 16 columns.
+A data frame with 11219 rows and 9 columns:
+\describe{
+   \item{location_name}{Name of Geographic Entity}
+   \item{location_id}{DHIS2 assigned ID for geographic entity}
+   \item{parent_id}{DHIS2 assigned ID of parent geographic entity}
+   \item{level}{DHIS2 assigned hierarchical level}
+   \item{path_to_top_parent}{string of DHIS2 IDs from current geographic entity to Uganda as a whole}
+   \item{region_name}{name of region associated with geographic entity. Blank is entity is region}
+   \item{district_name}{name of district associated with geographic entity. Blank is entity is district}
+   \item{DLG_name}{name of DLG (District Level Government) associated with geographic entity. Blank is entity is DLG}
+   \item{subcounty_name}{name of subcounty associated with geographic entity. Blank is entity is subcounty}
+   }
 }
 \usage{
 loc_table
 }
 \description{
-Location hierarchy table
+A list of all health facilities and administrative units, and their parent-child relationships
 }
 \keyword{datasets}

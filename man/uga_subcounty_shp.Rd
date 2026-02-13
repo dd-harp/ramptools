@@ -3,14 +3,24 @@
 \docType{data}
 \name{uga_subcounty_shp}
 \alias{uga_subcounty_shp}
-\title{Subcounty shapefile version1.0}
+\title{Subcounty shapefile version2.0}
 \format{
-An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 2206 rows and 4 columns.
+A shapefile with 2204 rows and 8 variables
+\describe{
+  \item{name}{Name of Subcounty}
+  \item{id}{DHIS2 assigned ID of Subcounty}
+  \item{geometry}{geometry of subcounty (polygon or multipolygon)}
+  \item{dup_geom}{indicator flag if the geometry is shared with another subcounty and cannot be resolved}
+  \item{split_sc}{indicator flag that geometry needs to be split, but has not been done}
+  \item{shp_as_district}{indicator flag if the subcounty shape is unknown and has therefore been assigned the district shape}
+  \item{district_name}{Name of parent district of subcounty}
+  }
 }
 \usage{
 uga_subcounty_shp
 }
 \description{
-Subcounty shapefile version1.0
+An R readable, valid, shapefile with subcounty shapes combatible with administrative
+hierarchies in loc_table
 }
 \keyword{datasets}

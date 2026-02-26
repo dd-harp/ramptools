@@ -115,7 +115,7 @@ get_db_diff <- function(new_data, db_path) {
     unique(new_data[[id]])
   })
   db_data <- get_data(db_path, id_list)
-  db_diff <- anti_join(new_data, db_data, , by = c(id_vars, value_var))
+  db_diff <- anti_join(new_data, db_data, by = c(id_vars, value_var))
   return(db_diff)
 }
 

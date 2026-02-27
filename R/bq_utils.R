@@ -39,7 +39,9 @@ bq_get_latest_version <- function(con = NULL, frequency = "monthly") {
   table_name <- paste0("raw_", frequency, "_version_metadata")
   sql <- sprintf("SELECT MAX(version) AS latest FROM `%s`", table_name)
   result <- DBI::dbGetQuery(con, sql)
-  return(as.integer(result$latest))
+  latest <- result$latest
+  if (is.null(latest) || is.na(latest)) return(0L)
+  return(as.integer(latest))
 }
 
 #' Get version metadata from BigQuery
@@ -139,6 +141,12 @@ bq_get_db_diff <- function(new_data, con = NULL, frequency = "monthly") {
   names(id_list) <- id_vars
 
   db_data <- bq_get_data(con, frequency, id_list)
+
+  # If no existing data, everything is new
+  if (nrow(db_data) == 0) {
+    return(data.table::as.data.table(new_data))
+  }
+
   db_diff <- dplyr::anti_join(
     data.table::as.data.table(new_data),
     db_data,

@@ -208,6 +208,16 @@ bq_append_raw_data <- function(dt, con = NULL, frequency = "monthly",
   on.exit(if (own_con) DBI::dbDisconnect(con))
 
   table_name <- paste0("raw_", frequency, "_data")
+
+  # Keep only columns that match the BQ schema and ensure correct types
+  expected_cols <- c("dataElement", "period", "orgUnit", "value",
+                     "timestamp", "version")
+  dt <- data.table::copy(dt[, intersect(expected_cols, names(dt)), with = FALSE])
+  if ("value" %in% names(dt)) {
+    dt[, value := as.numeric(value)]
+    dt <- dt[is.finite(value)]
+  }
+
   n <- nrow(dt)
 
   if (n <= chunk_size) {

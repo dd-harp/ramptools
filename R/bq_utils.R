@@ -441,6 +441,59 @@ bq_init_tables <- function(con = NULL, frequency = "both") {
       DBI::dbExecute(con, sql)
       message(sprintf("Created table: %s", imputed_table))
     }
+    # Outbreak data table
+    if (freq == "monthly") {
+      outbreak_table <- "outbreak_data"
+      if (!DBI::dbExistsTable(con, outbreak_table)) {
+        sql <- sprintf(
+          "CREATE TABLE `%s` (
+            date DATE,
+            code_name STRING,
+            name STRING,
+            value FLOAT64,
+            Year INT64,
+            Month STRING
+          )", outbreak_table)
+        DBI::dbExecute(con, sql)
+        message(sprintf("Created table: %s", outbreak_table))
+      }
+    }
   }
   message("BigQuery initialization complete.")
+}
+
+# -- Outbreak data functions --------------------------------------------------
+
+#' Write pre-computed outbreak index data to BigQuery
+#'
+#' Overwrites the \code{outbreak_data} table with the latest computed outbreak
+#' indices. Designed to be called after clean/aggregate to keep the Shiny app
+#' read-only.
+#'
+#' @param dt data.table with columns: date, code_name, name, value, Year, Month
+#' @param con A DBI BigQuery connection (or NULL to create one)
+#' @export
+bq_write_outbreak_data <- function(dt, con = NULL) {
+  own_con <- is.null(con)
+  if (own_con) con <- bq_connect()
+  on.exit(if (own_con) DBI::dbDisconnect(con))
+
+  table_name <- "outbreak_data"
+  DBI::dbWriteTable(con, table_name, dt, overwrite = TRUE)
+  message(sprintf("Wrote %d rows to %s", nrow(dt), table_name))
+}
+
+#' Read pre-computed outbreak index data from BigQuery
+#'
+#' @param con A DBI BigQuery connection (or NULL to create one)
+#' @return data.table with outbreak index data
+#' @export
+bq_get_outbreak_data <- function(con = NULL) {
+  own_con <- is.null(con)
+  if (own_con) con <- bq_connect()
+  on.exit(if (own_con) DBI::dbDisconnect(con))
+
+  sql <- "SELECT * FROM `outbreak_data`"
+  result <- DBI::dbGetQuery(con, sql)
+  return(data.table::as.data.table(result))
 }

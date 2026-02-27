@@ -263,7 +263,7 @@ bq_append_version_metadata <- function(version_df, con = NULL,
 #' @param frequency Either \code{"weekly"} or \code{"monthly"}
 #' @export
 bq_write_clean_data <- function(dt, con = NULL, frequency = "monthly",
-                                chunk_size = 500000L) {
+                                chunk_size = 500000L, append_mode = FALSE) {
   own_con <- is.null(con)
   if (own_con) con <- bq_connect()
   on.exit(if (own_con) DBI::dbDisconnect(con))
@@ -272,17 +272,20 @@ bq_write_clean_data <- function(dt, con = NULL, frequency = "monthly",
   n <- nrow(dt)
 
   if (n <= chunk_size) {
-    DBI::dbWriteTable(con, table_name, dt, overwrite = TRUE)
+    DBI::dbWriteTable(con, table_name, dt,
+                      overwrite = !append_mode, append = append_mode)
   } else {
-    # First chunk overwrites, rest append
     n_chunks <- ceiling(n / chunk_size)
     message(sprintf("Uploading %d rows in %d chunks...", n, n_chunks))
     for (i in seq_len(n_chunks)) {
       start_row <- (i - 1L) * chunk_size + 1L
       end_row <- min(i * chunk_size, n)
       chunk <- dt[start_row:end_row, ]
+      # First chunk of first call overwrites; everything else appends
+      first_chunk_overwrite <- (i == 1L) && !append_mode
       DBI::dbWriteTable(con, table_name, chunk,
-                        overwrite = (i == 1L), append = (i > 1L))
+                        overwrite = first_chunk_overwrite,
+                        append = !first_chunk_overwrite)
       message(sprintf("  Chunk %d/%d: rows %d-%d", i, n_chunks, start_row, end_row))
     }
   }
@@ -296,7 +299,7 @@ bq_write_clean_data <- function(dt, con = NULL, frequency = "monthly",
 #' @param frequency Either \code{"weekly"} or \code{"monthly"}
 #' @export
 bq_write_imputed_data <- function(dt, con = NULL, frequency = "monthly",
-                                  chunk_size = 500000L) {
+                                  chunk_size = 500000L, append_mode = FALSE) {
   own_con <- is.null(con)
   if (own_con) con <- bq_connect()
   on.exit(if (own_con) DBI::dbDisconnect(con))
@@ -305,7 +308,8 @@ bq_write_imputed_data <- function(dt, con = NULL, frequency = "monthly",
   n <- nrow(dt)
 
   if (n <= chunk_size) {
-    DBI::dbWriteTable(con, table_name, dt, overwrite = TRUE)
+    DBI::dbWriteTable(con, table_name, dt,
+                      overwrite = !append_mode, append = append_mode)
   } else {
     n_chunks <- ceiling(n / chunk_size)
     message(sprintf("Uploading %d rows in %d chunks...", n, n_chunks))
@@ -313,8 +317,10 @@ bq_write_imputed_data <- function(dt, con = NULL, frequency = "monthly",
       start_row <- (i - 1L) * chunk_size + 1L
       end_row <- min(i * chunk_size, n)
       chunk <- dt[start_row:end_row, ]
+      first_chunk_overwrite <- (i == 1L) && !append_mode
       DBI::dbWriteTable(con, table_name, chunk,
-                        overwrite = (i == 1L), append = (i > 1L))
+                        overwrite = first_chunk_overwrite,
+                        append = !first_chunk_overwrite)
       message(sprintf("  Chunk %d/%d: rows %d-%d", i, n_chunks, start_row, end_row))
     }
   }

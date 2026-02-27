@@ -192,6 +192,30 @@ bq_get_clean_data <- function(con = NULL, frequency = "monthly",
   return(data.table::as.data.table(result))
 }
 
+#' Sample imputed facility data from BigQuery
+#'
+#' Returns a random sample of rows from the imputed facility data table.
+#' Useful for computing outlier summaries without reading the full table.
+#'
+#' @param con A DBI BigQuery connection (or NULL to create one)
+#' @param frequency Either \code{"weekly"} or \code{"monthly"}
+#' @param n Maximum number of rows to sample
+#' @return data.table with sampled imputed data
+#' @export
+bq_get_imputed_sample <- function(con = NULL, frequency = "monthly", n = 500000L) {
+  own_con <- is.null(con)
+  if (own_con) con <- bq_connect()
+  on.exit(if (own_con) DBI::dbDisconnect(con))
+
+  table_name <- paste0("imputed_", frequency, "_facility_data")
+  sql <- sprintf(
+    "SELECT * FROM `%s` WHERE is_outlier IS NOT NULL ORDER BY RAND() LIMIT %d",
+    table_name, as.integer(n)
+  )
+  result <- DBI::dbGetQuery(con, sql)
+  return(data.table::as.data.table(result))
+}
+
 # -- Write functions ----------------------------------------------------------
 
 #' Append raw data to BigQuery

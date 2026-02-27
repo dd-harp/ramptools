@@ -201,14 +201,29 @@ bq_get_clean_data <- function(con = NULL, frequency = "monthly",
 #' @param con A DBI BigQuery connection (or NULL to create one)
 #' @param frequency Either \code{"weekly"} or \code{"monthly"}
 #' @export
-bq_append_raw_data <- function(dt, con = NULL, frequency = "monthly") {
+bq_append_raw_data <- function(dt, con = NULL, frequency = "monthly",
+                              chunk_size = 500000L) {
   own_con <- is.null(con)
   if (own_con) con <- bq_connect()
   on.exit(if (own_con) DBI::dbDisconnect(con))
 
   table_name <- paste0("raw_", frequency, "_data")
-  DBI::dbWriteTable(con, table_name, dt, append = TRUE)
-  message(sprintf("Appended %d rows to %s", nrow(dt), table_name))
+  n <- nrow(dt)
+
+  if (n <= chunk_size) {
+    DBI::dbWriteTable(con, table_name, dt, append = TRUE)
+  } else {
+    n_chunks <- ceiling(n / chunk_size)
+    message(sprintf("Uploading %d rows in %d chunks...", n, n_chunks))
+    for (i in seq_len(n_chunks)) {
+      start_row <- (i - 1L) * chunk_size + 1L
+      end_row <- min(i * chunk_size, n)
+      chunk <- dt[start_row:end_row, ]
+      DBI::dbWriteTable(con, table_name, chunk, append = TRUE)
+      message(sprintf("  Chunk %d/%d: rows %d-%d", i, n_chunks, start_row, end_row))
+    }
+  }
+  message(sprintf("Appended %d rows to %s", n, table_name))
 }
 
 #' Write version metadata to BigQuery
@@ -237,13 +252,30 @@ bq_append_version_metadata <- function(version_df, con = NULL,
 #' @param con A DBI BigQuery connection (or NULL to create one)
 #' @param frequency Either \code{"weekly"} or \code{"monthly"}
 #' @export
-bq_write_clean_data <- function(dt, con = NULL, frequency = "monthly") {
+bq_write_clean_data <- function(dt, con = NULL, frequency = "monthly",
+                                chunk_size = 500000L) {
   own_con <- is.null(con)
   if (own_con) con <- bq_connect()
   on.exit(if (own_con) DBI::dbDisconnect(con))
 
   table_name <- paste0("clean_", frequency, "_data")
-  DBI::dbWriteTable(con, table_name, dt, overwrite = TRUE)
+  n <- nrow(dt)
+
+  if (n <= chunk_size) {
+    DBI::dbWriteTable(con, table_name, dt, overwrite = TRUE)
+  } else {
+    # First chunk overwrites, rest append
+    n_chunks <- ceiling(n / chunk_size)
+    message(sprintf("Uploading %d rows in %d chunks...", n, n_chunks))
+    for (i in seq_len(n_chunks)) {
+      start_row <- (i - 1L) * chunk_size + 1L
+      end_row <- min(i * chunk_size, n)
+      chunk <- dt[start_row:end_row, ]
+      DBI::dbWriteTable(con, table_name, chunk,
+                        overwrite = (i == 1L), append = (i > 1L))
+      message(sprintf("  Chunk %d/%d: rows %d-%d", i, n_chunks, start_row, end_row))
+    }
+  }
   message(sprintf("Wrote %d rows to %s", nrow(dt), table_name))
 }
 
@@ -253,13 +285,29 @@ bq_write_clean_data <- function(dt, con = NULL, frequency = "monthly") {
 #' @param con A DBI BigQuery connection (or NULL to create one)
 #' @param frequency Either \code{"weekly"} or \code{"monthly"}
 #' @export
-bq_write_imputed_data <- function(dt, con = NULL, frequency = "monthly") {
+bq_write_imputed_data <- function(dt, con = NULL, frequency = "monthly",
+                                  chunk_size = 500000L) {
   own_con <- is.null(con)
   if (own_con) con <- bq_connect()
   on.exit(if (own_con) DBI::dbDisconnect(con))
 
   table_name <- paste0("imputed_", frequency, "_facility_data")
-  DBI::dbWriteTable(con, table_name, dt, overwrite = TRUE)
+  n <- nrow(dt)
+
+  if (n <= chunk_size) {
+    DBI::dbWriteTable(con, table_name, dt, overwrite = TRUE)
+  } else {
+    n_chunks <- ceiling(n / chunk_size)
+    message(sprintf("Uploading %d rows in %d chunks...", n, n_chunks))
+    for (i in seq_len(n_chunks)) {
+      start_row <- (i - 1L) * chunk_size + 1L
+      end_row <- min(i * chunk_size, n)
+      chunk <- dt[start_row:end_row, ]
+      DBI::dbWriteTable(con, table_name, chunk,
+                        overwrite = (i == 1L), append = (i > 1L))
+      message(sprintf("  Chunk %d/%d: rows %d-%d", i, n_chunks, start_row, end_row))
+    }
+  }
   message(sprintf("Wrote %d rows to %s", nrow(dt), table_name))
 }
 
@@ -339,11 +387,15 @@ bq_init_tables <- function(con = NULL, frequency = "both") {
         "CREATE TABLE `%s` (
           location_id STRING,
           date_mid DATE,
-          period STRING,
           value FLOAT64,
           imputed_value FLOAT64,
+          period STRING,
           is_outlier INT64,
           code_name STRING,
+          dhis_id STRING,
+          timestamp STRING,
+          version INT64,
+          location_name STRING,
           level INT64
         )", imputed_table)
       DBI::dbExecute(con, sql)

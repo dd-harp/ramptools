@@ -61,18 +61,19 @@ reference:
 - title: Cloud Utilities
   desc: Utilities to Access the Data Warehouse
   contents:
-  -  bq_connect
-  -  bq_get_latest_version
-  -  bq_get_version_metadata
-  -  bq_get_data
-  -  bq_get_db_diff
-  -  bq_get_clean_data
-  -  bq_get_imputed_sample
-  -  bq_append_raw_data
-  -  bq_append_version_metadata
-  -  bq_write_clean_data
-  -  bq_write_imputed_data
-  -  bq_init_tables
-  -  bq_write_outbreak_data
-  -  bq_get_outbreak_data
-  -  ramptools-package
+  - bq_connect
+  - bq_get_latest_version
+  - bq_get_version_metadata
+  - bq_get_data
+  - bq_get_db_diff
+  - bq_get_clean_data
+  - bq_get_imputed_sample
+  - bq_append_raw_data
+  - bq_append_version_metadata
+  - bq_write_clean_data
+  - bq_write_imputed_data
+  - bq_init_tables
+  - bq_write_outbreak_data
+  - bq_get_outbreak_data
+  - ramptools-package
+

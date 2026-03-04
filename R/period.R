@@ -5,7 +5,7 @@
 #' @param sub_year_start Integer for either week or month of the year to start
 #' @param year_end Integer for end year
 #' @param sub_year_end Integer for either week or month of the year to end
-#' @returns A vector of periods following the DHIS formatting standard of either YYYYW{week number with no leading zero} or YYYY{month number with a leading zero for single digit integers}
+#' @returns A vector of periods following the DHIS formatting standard of either YYYYW\{week number with no leading zero\} or YYYY\{month number with a leading zero for single digit integers\}
 #' @export
 get_period_range <- function(frequency, year_start, sub_year_start, year_end,
                           sub_year_end) {

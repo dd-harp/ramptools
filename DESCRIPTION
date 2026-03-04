@@ -1,24 +1,31 @@
 Package: ramptools
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Title: RAMP Uganda Malaria Data Tools
+Version: 0.2.0
+Authors@R: person("Austin", "Carter", role = c("aut", "cre"),
+    email = "aucarter@uw.edu",  comment = c(ORCID = "0000-0002-3588-6142"))
+Description: Shared metadata tables and utility functions for the Uganda RAMP
+    (Routine Assessment of Malaria Programs) project. Provides location
+    hierarchies, indicator mappings, shapefiles, and database read/write
+    utilities for both local SQLite and Google BigQuery backends.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 LazyDataCompression: xz
 Depends: 
     R (>= 3.5.0)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Imports: 
+    bigrquery,
     data.table,
     DBI,
-    RSQLite,
     dplyr,
-    sf
+    RSQLite
 Suggests: 
+    sf,
+    gargle,
+    knitr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+BuildManual: TRUE
+VignetteBuilder: knitr

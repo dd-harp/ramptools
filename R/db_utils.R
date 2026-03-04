@@ -2,6 +2,7 @@
 #'
 #' @param db_path Location of the database
 #' @returns Integer value of latest version
+#' @importFrom dplyr pull
 #' @export
 get_latest_version <- function(db_path) {
   # Connect to database
@@ -37,6 +38,7 @@ get_version_metadata <- function(db_path, version_id = NULL) {
 #' Get the names of the variables that uniquely identify an observation
 #'
 #' @param db_path Location of the database
+#' @importFrom dplyr pull
 #' @returns Vector of column names that uniquely identify an observation
 #' @export
 get_id_vars <- function(db_path) {
@@ -55,6 +57,7 @@ get_id_vars <- function(db_path) {
 #'
 #' @param db_path Location of the database
 #' @returns Column name for the value
+#' @importFrom dplyr pull
 #' @export
 get_value_var <- function(db_path) {
   # Connect to database
@@ -73,6 +76,7 @@ get_value_var <- function(db_path) {
 #' @param db_path Location of the database
 #' @param id_list A list of id names and values, if NULL, pulls full table
 #' @param version_id Integer version number, if NULL, pulls latest version
+#' @importFrom dplyr group_by across all_of ungroup
 #' @export
 get_data <- function(db_path, id_list = NULL, version_id = NULL) {
   # Connect to database
@@ -115,7 +119,7 @@ get_db_diff <- function(new_data, db_path) {
     unique(new_data[[id]])
   })
   db_data <- get_data(db_path, id_list)
-  db_diff <- anti_join(new_data, db_data, , by = c(id_vars, value_var))
+  db_diff <- anti_join(new_data, db_data, by = c(id_vars, value_var))
   return(db_diff)
 }
 
@@ -126,7 +130,7 @@ get_db_diff <- function(new_data, db_path) {
 #' @export
 make_human_readable <- function(dt) {
   setnames(dt, c("dataElement", "orgUnit"), c("dhis_id", "location_id"))
-  dt <- merge(dt, loc_table[, .(location_id, location_name)], by = "location_id")
-  dt <- merge(dt, indicator_table[, .(dhis_id, code_name)], by = "dhis_id")
+  dt <- merge(dt, ramptools::loc_table[, .(location_id, location_name)], by = "location_id")
+  dt <- merge(dt, ramptools::indicator_table[, .(dhis_id, code_name)], by = "dhis_id")
   return(dt)
 }

@@ -18,7 +18,7 @@ get_period_range(frequency, year_start, sub_year_start, year_end, sub_year_end)
 \item{sub_year_end}{Integer for either week or month of the year to end}
 }
 \value{
-A vector of periods following the DHIS formatting standard of either YYYYW{week number with no leading zero} or YYYY{month number with a leading zero for single digit integers}
+A vector of periods following the DHIS formatting standard of either YYYYW\{week number with no leading zero\} or YYYY\{month number with a leading zero for single digit integers\}
 }
 \description{
 Get the a vector of periods follow DHIS formatting that spans that start and end period provided

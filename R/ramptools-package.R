@@ -22,6 +22,5 @@
 #' @importFrom dplyr tbl
 #' @importFrom dplyr filter
 #' @importFrom dplyr collect
-#' @import sf
 ## usethis namespace: end
 NULL

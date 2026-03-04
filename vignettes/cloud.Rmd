@@ -1,0 +1,27 @@
+---
+title: "Big Query"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Big Query}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Setup
+
+The pipeline stores data in Google BigQuery under project `uganda-malaria`, dataset `uga_facility_data`. 
+
+Tables:
+
+| Table | Description |
+|---|---|
+| `raw_{frequency}_data` | Append-only versioned raw DHIS pulls |
+| `raw_{frequency}_version_metadata` | Provenance metadata per version |
+| `clean_{frequency}_data` | Latest clean aggregated data (overwritten each run) |
+| `imputed_{frequency}_facility_data` | Facility-level imputed data (overwritten each run) |
+
+To initialize:
+```r
+library(ramptools)
+bq_init_tables(frequency = "both")
+```

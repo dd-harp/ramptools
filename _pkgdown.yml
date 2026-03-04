@@ -1,0 +1,78 @@
+emplate:
+  bootstrap: 5
+  math-rendering: mathjax
+url: https://dd-harp.github.io/ramptools/
+navbar:
+  left:
+  - text: Articles
+    menu:
+    - text: Installation
+      href: articles/installation.html
+    - text: Big Query Setup
+      href: articles/cloud.html
+  - text: Reference
+    href: reference/index.html
+  right:
+  - icon: fa-github
+    href: https://github.com/dd-harp/ramptools/
+home:
+  sidebar:
+    structure:
+    - links
+    - license
+    - community
+    - citation
+    - authors
+    - dev
+reference:
+- title: Metadata
+  desc: Data Objects
+  contents:
+  - loc_table
+  - health_facility_table
+  - indicator_table
+  - district_pop
+  - age_sex_table
+- title: Data Utilities
+  desc: Utilities to Work with Metadata
+  contents:
+  - get_latest_output_date_index
+  - get_output_dir
+  - get_period_range
+  - make_month_map
+  - make_week_map
+- title: Shapefiles
+  desc: GIS Shapefiles
+  contents:
+  - uga_subcounty_shp
+  - uga_district_shp
+  - uga_region_shp
+  - uga_water_shp
+- title: SQLite Utilities
+  desc: Data Objects
+  contents:
+  - get_data
+  - get_db_diff
+  - get_latest_version
+  - get_version_metadata
+  - get_id_vars
+  - get_value_var
+  - make_human_readable
+- title: Cloud Utilities
+  desc: Utilities to Access the Data Warehouse
+  contents:
+  -  bq_connect
+  -  bq_get_latest_version
+  -  bq_get_version_metadata
+  -  bq_get_data
+  -  bq_get_db_diff
+  -  bq_get_clean_data
+  -  bq_get_imputed_sample
+  -  bq_append_raw_data
+  -  bq_append_version_metadata
+  -  bq_write_clean_data
+  -  bq_write_imputed_data
+  -  bq_init_tables
+  -  bq_write_outbreak_data
+  -  bq_get_outbreak_data
+  -  ramptools-package

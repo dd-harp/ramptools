@@ -224,6 +224,7 @@ bq_get_imputed_sample <- function(con = NULL, frequency = "monthly", n = 500000L
 #'   value, timestamp, version)
 #' @param con A DBI BigQuery connection (or NULL to create one)
 #' @param frequency Either \code{"weekly"} or \code{"monthly"}
+#' @param chunk_size Upper limit on download chunk
 #' @export
 bq_append_raw_data <- function(dt, con = NULL, frequency = "monthly",
                               chunk_size = 500000L) {
@@ -285,6 +286,8 @@ bq_append_version_metadata <- function(version_df, con = NULL,
 #' @param dt data.table with clean aggregated data
 #' @param con A DBI BigQuery connection (or NULL to create one)
 #' @param frequency Either \code{"weekly"} or \code{"monthly"}
+#' @param append_mode FALSE=overwrite, TRUE=append
+#' @param chunk_size Upper limit on upload
 #' @export
 bq_write_clean_data <- function(dt, con = NULL, frequency = "monthly",
                                 chunk_size = 500000L, append_mode = FALSE) {
@@ -321,6 +324,8 @@ bq_write_clean_data <- function(dt, con = NULL, frequency = "monthly",
 #' @param dt data.table with imputed facility-level data
 #' @param con A DBI BigQuery connection (or NULL to create one)
 #' @param frequency Either \code{"weekly"} or \code{"monthly"}
+#' @param append_mode FALSE=overwrite, TRUE=append
+#' @param chunk_size Upper limit on upload
 #' @export
 bq_write_imputed_data <- function(dt, con = NULL, frequency = "monthly",
                                   chunk_size = 500000L, append_mode = FALSE) {

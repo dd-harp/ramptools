@@ -4,8 +4,12 @@
 \name{ramptools-package}
 \alias{ramptools}
 \alias{ramptools-package}
-\title{ramptools: What the Package Does (Title Case)}
+\title{ramptools: RAMP Uganda Malaria Data Tools}
 \description{
-More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
+Shared metadata tables and utility functions for the Uganda RAMP (Routine Assessment of Malaria Programs) project. Provides location hierarchies, indicator mappings, shapefiles, and database read/write utilities for both local SQLite and Google BigQuery backends.
+}
+\author{
+\strong{Maintainer}: Austin Carter \email{aucarter@uw.edu} (\href{https://orcid.org/0000-0002-3588-6142}{ORCID})
+
 }
 \keyword{internal}

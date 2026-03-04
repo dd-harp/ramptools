@@ -1,0 +1,15 @@
+---
+title: "Installation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Installation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+To install `ramptools,` you will need the `devtools` package. 
+
+```{r, eval=F}
+install.packages("devtools")
+devtools::install_github("dd-harp/ramptools")
+```

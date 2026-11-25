@@ -6,7 +6,7 @@
 \alias{ramptools-package}
 \title{ramptools: RAMP Uganda Malaria Data Tools}
 \description{
-Shared metadata tables and utility functions for the Uganda RAMP (Routine Assessment of Malaria Programs) project. Provides location hierarchies, indicator mappings, shapefiles, and database read/write utilities for both local SQLite and Google BigQuery backends.
+Shared metadata tables and utility functions for the Uganda RAMP (Robust Analytics for Malaria Policy) project. Provides location hierarchies, indicator mappings, shapefiles, and database read/write utilities for both local SQLite and Google BigQuery backends.
 }
 \seealso{
 Useful links:

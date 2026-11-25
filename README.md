@@ -1,6 +1,6 @@
 # ramptools
 
-Shared R package for the Uganda **RAMP** (Routine Assessment of Malaria Programs) project. Provides metadata tables, shapefiles, and database utilities used by the ETL pipeline (`uga-etl-facility-data`) and analytics repos (`outbreak`).
+Shared R package for the Uganda **RAMP** (Robust Analytics for Malaria Policy) project. Provides metadata tables, shapefiles, and database utilities used by the ETL pipeline (`uga-etl-facility-data`) and analytics repos (`outbreak`).
 An R package providing utility functions and reference data for working with health information systems databases, particularly DHIS2 (District Health Information System 2) data from Uganda.
 
 ## Overview
